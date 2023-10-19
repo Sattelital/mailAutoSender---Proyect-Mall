@@ -21,7 +21,7 @@ setInterval(() => {
     if (db) {
         const dbTime = JSON.parse(db)
         const actualTime = new Date()
-        const actualDate = `${String(actualTime.getDate()).padStart(2, '0')}/${String(actualTime.getMonth() + 1).padStart(2, '0')}/${String(actualTime.getFullYear())}`
+        const actualDate = `${String(actualTime.getDate() - 1).padStart(2, '0')}/${String(actualTime.getMonth() + 1).padStart(2, '0')}/${String(actualTime.getFullYear())}`
         if (dbTime.year === actualTime.getFullYear() && dbTime.month === actualTime.getMonth() + 1 && dbTime.day === actualTime.getDate()) {
             console.log('Ya se envió el archivo el día de hoy');
         } else {
