@@ -31,7 +31,7 @@ setInterval(() => {
             // sendEmail('Proyectos TI - GLOBAL FIBER <proyectos.ti@globalfiber.com.pe>', ['edward.espinoza@globalfiber.com.pe'], [], [], 'REPORTE DE REGISTROS', { dia: actualDate, linkDeDescarga: `http://metricas.globalfiber.com.pe:3000/repo/mall/data?year=2023&month=10&day=${actualTime.getDate() - 1}` })
         }
     }
-}, 60000)
+}, 300000)
 
 
 
