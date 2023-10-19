@@ -50,13 +50,13 @@ function sendEmail(from, to, cc, bcc, subject, content) {
         cc,
         bcc,
         subject,
-        html: template,
-        attachments: [
-            {
-                filename: 'acumulado18102023.xlsx',
-                path: 'downloads/acumulado18102023.xlsx',
-            },
-        ],
+        html: template
+        // attachments: [
+        //     {
+        //         filename: 'acumulado18102023.xlsx',
+        //         path: 'downloads/acumulado18102023.xlsx',
+        //     },
+        // ],
     };
     transporter.sendMail(mailOptions, function (error, info) {
         if (error) {
