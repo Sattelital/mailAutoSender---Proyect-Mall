@@ -23,7 +23,7 @@ setInterval(() => {
         const actualTime = new Date()
         const actualDate = `${String(actualTime.getDate() - 1).padStart(2, '0')}/${String(actualTime.getMonth() + 1).padStart(2, '0')}/${String(actualTime.getFullYear())}`
         if (dbTime.year === actualTime.getFullYear() && dbTime.month === actualTime.getMonth() + 1 && dbTime.day === actualTime.getDate()) {
-            console.log('Ya se envió el archivo el día de hoy');
+            // console.log('Ya se envió el archivo el día de hoy');
         } else {
             console.log(`Enviar archivo ahora ${actualDate} - ${actualTime.getHours() + ':' + actualTime.getMinutes() + ':' + actualTime.getSeconds()}`);
             // sendEmail(from, to, cc, bcc, subject, content)
@@ -31,7 +31,7 @@ setInterval(() => {
             // sendEmail('Proyectos TI - GLOBAL FIBER <proyectos.ti@globalfiber.com.pe>', ['edward.espinoza@globalfiber.com.pe'], [], [], 'REPORTE DE REGISTROS', { dia: actualDate, linkDeDescarga: `http://metricas.globalfiber.com.pe:3000/repo/mall/data?year=2023&month=10&day=${actualTime.getDate() - 1}` })
         }
     }
-}, 300000)
+}, 600000)
 
 
 
