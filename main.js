@@ -34,13 +34,26 @@ setInterval(() => {
         const fechaHoyFormateada = fechaHoy.toLocaleDateString('es-ES', formatoFecha);
         const fechaAyerFormateada = fechaAyer.toLocaleDateString('es-ES', formatoFecha);
 
+        // Direcciones de envio
+        const receivers = {
+            to: [
+                'WiFi MA <wifi.ma@aventura-adm.com>'
+            ],
+            cc: [
+                'Luis Gomez <luis.gomez@globalfiber.com.pe>'
+            ],
+            bcc: [
+                'Edward Espinoza <edward.espinoza@globalfiber.com.pe>'
+            ]
+        }
+
         // Enviar archivo diariamente
         if (dbTime.year === fechaHoy.getFullYear() && dbTime.month === fechaHoy.getMonth() + 1 && dbTime.day === fechaHoy.getDate()) {
             // console.log('Ya se envió el archivo el día de hoy');
         } else {
             console.log(`Se envió el archivo diario ${fechaHoyFormateada} - ${fechaHoy.getHours() + ':' + fechaHoy.getMinutes() + ':' + fechaHoy.getSeconds()}`);
             // sendEmail(from, to, cc, bcc, subject, content, htmlTemplate)
-            sendEmail('Proyectos TI - GLOBAL FIBER <proyectos.ti@globalfiber.com.pe>', ['WiFi MA <wifi.ma@aventura-adm.com>'], ['Carlos Cabello <carlos.cabello@globalfiber.com.pe>'], ['Edward Espinoza <edward.espinoza@globalfiber.com.pe>'], 'REPORTE DE REGISTROS DIARIO', { dia: fechaAyerFormateada, linkDeDescarga: `http://metricas.globalfiber.com.pe:3000/repo/mall/data?year=${fechaAyer.getFullYear()}&month=${fechaAyer.getMonth() + 1}&day=${fechaAyer.getDate()}` }, './templates/mailToMallDiario.html')
+            sendEmail('Proyectos TI - GLOBAL FIBER <proyectos.ti@globalfiber.com.pe>', receivers.to, receivers.cc, receivers.bcc, 'REPORTE DE REGISTROS DIARIO', { dia: fechaAyerFormateada, linkDeDescarga: `http://metricas.globalfiber.com.pe:3000/repo/mall/data?year=${fechaAyer.getFullYear()}&month=${fechaAyer.getMonth() + 1}&day=${fechaAyer.getDate()}` }, './templates/mailToMallDiario.html')
             // sendEmail('Proyectos TI - GLOBAL FIBER <proyectos.ti@globalfiber.com.pe>', ['Edward Espinoza <edward.espinoza@globalfiber.com.pe>'], [], [], 'REPORTE DE REGISTROS DIARIO', { dia: fechaAyerFormateada, linkDeDescarga: `http://metricas.globalfiber.com.pe:3000/repo/mall/data?year=${fechaAyer.getFullYear()}&month=${fechaAyer.getMonth() + 1}&day=${fechaAyer.getDate()}` }, './templates/mailToMallDiario.html')
         }
 
@@ -54,7 +67,7 @@ setInterval(() => {
         } else {
             console.log(`Se envió el archivo mensual ${fechaHoyFormateada} - ${fechaHoy.getHours() + ':' + fechaHoy.getMinutes() + ':' + fechaHoy.getSeconds()}`);
             // sendEmail(from, to, cc, bcc, subject, content)
-            sendEmail('Proyectos TI - GLOBAL FIBER <proyectos.ti@globalfiber.com.pe>', ['WiFi MA <wifi.ma@aventura-adm.com>'], ['Carlos Cabello <carlos.cabello@globalfiber.com.pe>'], ['Edward Espinoza <edward.espinoza@globalfiber.com.pe>'], 'REPORTE DE REGISTROS MENSUAL', { dia: mesAnteriorFormateado, linkDeDescarga: `http://metricas.globalfiber.com.pe:3000/repo/mall/data?year=${mesAnterior.getFullYear()}&month=${mesAnterior.getMonth() + 1}` }, './templates/mailToMallMensual.html')
+            sendEmail('Proyectos TI - GLOBAL FIBER <proyectos.ti@globalfiber.com.pe>', ['WiFi MA <wifi.ma@aventura-adm.com>'], ['Luis Gomez <luis.gomez@globalfiber.com.pe>'], ['Edward Espinoza <edward.espinoza@globalfiber.com.pe>'], 'REPORTE DE REGISTROS MENSUAL', { dia: mesAnteriorFormateado, linkDeDescarga: `http://metricas.globalfiber.com.pe:3000/repo/mall/data?year=${mesAnterior.getFullYear()}&month=${mesAnterior.getMonth() + 1}` }, './templates/mailToMallMensual.html')
             // sendEmail('Proyectos TI - GLOBAL FIBER <proyectos.ti@globalfiber.com.pe>', ['edward.espinoza@globalfiber.com.pe'], [], [], 'REPORTE DE REGISTROS MENSUAL', { dia: mesAnteriorFormateado, linkDeDescarga: `http://metricas.globalfiber.com.pe:3000/repo/mall/data?year=${mesAnterior.getFullYear()}&month=${mesAnterior.getMonth() + 1}` }, './templates/mailToMallMensual.html')
         }
     }
